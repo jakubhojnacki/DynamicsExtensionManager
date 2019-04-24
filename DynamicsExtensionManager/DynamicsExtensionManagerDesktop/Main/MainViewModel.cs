@@ -13,20 +13,11 @@ namespace The365People.DynamicsExtensionManager.Desktop
     {
         public MainModel Model { get; private set; }
 
-        public DynamicsService Service 
-        { 
-            get { return this.Model.Service; } 
-            set { this.Model.Service = value; } 
-        }
-        public ObservableCollection<DynamicsExtension> Extensions
-        {
-            get { return this.Model.Extensions; }
-        }
-        public DynamicsExtension Extension
-        { 
-            get { return this.Model.Extension; } 
-            set { this.Model.Extension = value; }
-        }
+        public DynamicsService Service { get { return this.Model.Service; } set { this.Model.Service = value; } }
+        public DynamicsFolder Folder { get { return this.Model.Folder; } set { this.Model.Folder = value; } }
+        public ObservableCollection<DynamicsExtension> Extensions { get { return this.Model.Extensions; } }
+        public ObservableCollection<DynamicsExtension> SelectedExtensions { get { return this.Model.SelectedExtensions; } }
+        public DynamicsExtension Extension { get { return this.Model.Extension; } set { this.Model.Extension = value; } }
 
         public RelayCommand ExitCommand { get; set; }
         public RelayCommand AboutCommand { get; set; }
@@ -118,7 +109,7 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public bool CanExecuteDisconnectFromService(object pParameters)
         {
-            return true;
+            return this.Service != null;
         }
 
         public void ExecuteDisconnectFromFolder(object pParameters)
@@ -127,7 +118,7 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public bool CanExecuteDisconnectFromFolder(object pParameters)
         {
-            return true;
+            return this.Folder != null;
         }
 
         public void ExecuteDetectExtensions(object pParameters)
@@ -136,7 +127,7 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public bool CanExecuteDetectExtensions(object pParameters)
         {
-            return true;
+            return ((this.Service != null) || (this.Folder != null));
         }
 
         public void ExecuteShowExtensionInformation(object pParameters)
@@ -145,7 +136,7 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public bool CanExecuteShowExtensionInformation(object pParameters)
         {
-            return true;
+            return this.Extension != null;
         }
 
         public void ExecutePublish(object pParameters)
@@ -154,7 +145,7 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public bool CanExecutePublish(object pParameters)
         {
-            return true;
+            return this.SelectedExtensions != null;
         }
 
         public void ExecuteInstall(object pParameters)
@@ -163,7 +154,7 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public bool CanExecuteInstall(object pParameters)
         {
-            return true;
+            return this.SelectedExtensions != null;
         }
 
         public void ExecuteUninstall(object pParameters)
@@ -172,7 +163,7 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public bool CanExecuteUninstall(object pParameters)
         {
-            return true;
+            return this.SelectedExtensions != null;
         }
 
         public void ExecuteUnpublish(object pParameters)
@@ -181,7 +172,7 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public bool CanExecuteUnpublish(object pParameters)
         {
-            return true;
+            return this.SelectedExtensions != null;
         }
 
         public void ExecuteSynchronise(object pParameters)
@@ -190,7 +181,7 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public bool CanExecuteSynchronise(object pParameters)
         {
-            return true;
+            return this.SelectedExtensions != null;
         }
 
         public void ExecuteUpgrade(object pParameters)
@@ -199,7 +190,7 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public bool CanExecuteUpgrade(object pParameters)
         {
-            return true;
+            return this.SelectedExtensions != null;
         }
 
         public void ExecuteRemove(object pParameters)
@@ -208,7 +199,7 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public bool CanExecuteRemove(object pParameters)
         {
-            return true;
+            return this.SelectedExtensions != null;
         }
     }
 }

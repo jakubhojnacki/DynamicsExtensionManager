@@ -14,14 +14,22 @@ using System.Windows.Shapes;
 
 namespace The365People.DynamicsExtensionManager.Desktop
 {
-    /// <summary>
-    /// Interaction logic for MainView.xaml
-    /// </summary>
     public partial class MainView : Window
     {
+        public MainViewModel ViewModel { get; set; }
+
         public MainView()
         {
-            InitializeComponent();
+            this.ViewModel = new MainViewModel(new MainModel());
+            this.DataContext = this.ViewModel;
+            this.InitializeComponent();
+        }
+
+        public MainView(MainViewModel pViewModel)
+        {
+            this.ViewModel = pViewModel;
+            this.DataContext = this.ViewModel;
+            this.InitializeComponent();
         }
     }
 }

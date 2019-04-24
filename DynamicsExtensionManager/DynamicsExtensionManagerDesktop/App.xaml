@@ -4,5 +4,14 @@
              xmlns:local="clr-namespace:The365People.DynamicsExtensionManager.Desktop"
              StartupUri="Main/MainView.xaml">
     <Application.Resources>
+        <Style x:Key="WrappedColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock TextWrapping="Wrap" Text="{Binding}"></TextBlock>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

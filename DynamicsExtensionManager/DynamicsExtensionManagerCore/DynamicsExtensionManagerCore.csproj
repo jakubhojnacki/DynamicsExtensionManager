@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Extensions\DynamicsExtension.cs" />
     <Compile Include="Extensions\DynamicsExtensionScope.cs" />
+    <Compile Include="Folders\DynamicsFolder.cs" />
     <Compile Include="Services\DynamicsService.cs" />
     <Compile Include="Services\DynamicsServiceDetector.cs" />
     <Compile Include="Services\DynamicsServiceState.cs" />

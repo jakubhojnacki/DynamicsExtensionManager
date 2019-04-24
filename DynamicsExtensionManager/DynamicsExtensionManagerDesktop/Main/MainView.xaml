@@ -38,5 +38,29 @@
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
+        <DataGrid x:Name="ServicesDataGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Extensions}" GridLinesVisibility="Vertical">
+            <DataGrid.AlternatingRowBackground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientActiveCaptionColorKey}}"/>
+            </DataGrid.AlternatingRowBackground>
+            <DataGrid.RowBackground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
+            </DataGrid.RowBackground>
+            <DataGrid.VerticalGridLinesBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveBorderColorKey}}"/>
+            </DataGrid.VerticalGridLinesBrush>
+            <DataGrid.HorizontalGridLinesBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveBorderColorKey}}"/>
+            </DataGrid.HorizontalGridLinesBrush>
+            <DataGrid.Columns>
+                <DataGridTextColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Binding="{Binding Name}" Header="Name" Width="300"/>
+                <DataGridTextColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Binding="{Binding Version}" Header="Version" Width="200"/>
+                <DataGridTextColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Binding="{Binding Scope}" Header="Scope" Width="100"/>
+                <DataGridCheckBoxColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Binding="{Binding IsPublished}" Header="Is Published" Width="100" />
+                <DataGridCheckBoxColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Binding="{Binding IsSynchronised}" Header="Is Synchronised" Width="100" />
+                <DataGridCheckBoxColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Binding="{Binding IsUpgraded}" Header="Is Upgraded" Width="100" />
+                <DataGridCheckBoxColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Binding="{Binding IsInstalled}" Header="Is Installed" Width="100" />
+                <DataGridCheckBoxColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}"  Binding="{Binding FileExists}" Header="File Exists" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </DockPanel>
 </Window>
