@@ -1,0 +1,8 @@
+﻿<Application x:Class="The365People.DynamicsExtensionManager.Desktop.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:The365People.DynamicsExtensionManager.Desktop"
+             StartupUri="Main/MainView.xaml">
+    <Application.Resources>
+    </Application.Resources>
+</Application>

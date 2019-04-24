@@ -1,0 +1,42 @@
+﻿<Window x:Class="The365People.DynamicsExtensionManager.Desktop.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:The365People.DynamicsExtensionManager.Desktop"
+        mc:Ignorable="d"
+        Title="Main View" Height="450" Width="1200">
+    <DockPanel x:Name="MainPanel">
+        <Ribbon DockPanel.Dock="Top">
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu>
+                    <RibbonApplicationMenuItem Name="ExitRibbonApplicationMenuItem" Header="Exit" ImageSource="/Resources/Ribbon/Exit32.png" Command="{Binding ExitCommand}" />
+                    <RibbonSeparator />
+                    <RibbonApplicationMenuItem Name="AboutRibbonApplicationMenuItem" Header="About" ImageSource="/Resources/Ribbon/About32.png" Command="{Binding AboutCommand}" />
+                    <RibbonApplicationMenuItem Name="HistoryRibbonApplicationMenuItem" Header="History" ImageSource="/Resources/Ribbon/History32.png" Command="{Binding HistoryCommand}" />
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+            <RibbonTab Header="Source">
+                <RibbonGroup Header="Source">
+                    <RibbonButton Name="ConnectToServiceRibbonButton" LargeImageSource="/Resources/Ribbon/ConnectToService32.png" SmallImageSource="/Resources/Ribbon/ConnectToService16.png" Label="Connect to Service" Command="{Binding ConnectToServiceCommand}" />
+                    <RibbonButton Name="ConnectToFolderRibbonButton" LargeImageSource="/Resources/Ribbon/ConnectToFolder32.png" SmallImageSource="/Resources/Ribbon/ConnectToFolder16.png" Label="Connect to Folder" Command="{Binding ConnectToFolderCommand}" />
+                    <RibbonButton Name="DisconnectFromServiceRibbonButton" SmallImageSource="/Resources/Ribbon/DisconnectFromService16.png" Label="Disconnect from Service" Command="{Binding DisconnectFromServiceCommand}" />
+                    <RibbonButton Name="DisconnectFromFolderRibbonButton" SmallImageSource="/Resources/Ribbon/DisconnectFromFolder16.png" Label="Disconnect from Folder" Command="{Binding DisconnectFromFolderCommand}" />
+                </RibbonGroup>
+                <RibbonGroup Header="General">
+                    <RibbonButton Name="DetectExtensionsRibbonButton" LargeImageSource="/Resources/Ribbon/DetectExtensions32.png" SmallImageSource="/Resources/Ribbon/DetectExtensions16.png" Label="Detect Extensions" Command="{Binding DetectExtensionsCommand}" />
+                    <RibbonButton Name="ShowExtensionInformationRibbonButton" LargeImageSource="/Resources/Ribbon/ShowExtensionInformation32.png" SmallImageSource="/Resources/Ribbon/ShowExtensionInformation16.png" Label="Show Extension Information" Command="{Binding ShowExtensionInformationCommand}" />
+                </RibbonGroup>
+                <RibbonGroup Header="Extension Management">
+                    <RibbonButton Name="PublishRibbonButton" LargeImageSource="/Resources/Ribbon/Publish32.png" SmallImageSource="/Resources/Ribbon/Publish16.png" Label="Publish" Command="{Binding PublishCommand}" />
+                    <RibbonButton Name="InstallRibbonButton" LargeImageSource="/Resources/Ribbon/Install32.png" SmallImageSource="/Resources/Ribbon/Install16.png" Label="Install" Command="{Binding InstallCommand}" />
+                    <RibbonButton Name="UninstallRibbonButton" LargeImageSource="/Resources/Ribbon/Uninstall32.png" SmallImageSource="/Resources/Ribbon/Uninstall16.png" Label="Uninstall" Command="{Binding UninstallCommand}" />
+                    <RibbonButton Name="UnpublishRibbonButton" LargeImageSource="/Resources/Ribbon/Unpublish32.png" SmallImageSource="/Resources/Ribbon/Unpublish16.png" Label="Unpublish" Command="{Binding UnpublishCommand}" />
+                    <RibbonButton Name="SynchroniseRibbonButton" SmallImageSource="/Resources/Ribbon/Synchronise16.png" Label="Synchronise" Command="{Binding SynchroniseCommand}" />
+                    <RibbonButton Name="UpgradeRibbonButton" SmallImageSource="/Resources/Ribbon/Upgrade16.png" Label="Upgrade" Command="{Binding UpgradeCommand}" />
+                    <RibbonButton Name="RemoveRibbonButton" SmallImageSource="/Resources/Ribbon/Remove16.png" Label="Remove" Command="{Binding RemoveCommand}" />
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+    </DockPanel>
+</Window>
