@@ -7,8 +7,8 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Dynamics Extension Manager Desktop")]
-[assembly: AssemblyDescription("Desktop (WPF) version of Dynamics Extension Manager")]
+[assembly: AssemblyTitle("Dynamics Extension Manager")]
+[assembly: AssemblyDescription("Utility to manage Dynamics extensions")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("The 365 People")]
 [assembly: AssemblyProduct("Dynamics Extension Manager")]

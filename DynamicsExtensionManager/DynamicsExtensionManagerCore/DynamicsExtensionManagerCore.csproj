@@ -54,10 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\DynamicsExtension.cs" />
+    <Compile Include="Extensions\DynamicsExtensionManager.cs" />
     <Compile Include="Extensions\DynamicsExtensionScope.cs" />
     <Compile Include="Folders\DynamicsFolder.cs" />
+    <Compile Include="History\HistoryEntry.cs" />
+    <Compile Include="History\HistoryEntryCollection.cs" />
+    <Compile Include="History\HistoryFactory.cs" />
     <Compile Include="Services\DynamicsService.cs" />
-    <Compile Include="Services\DynamicsServiceDetector.cs" />
+    <Compile Include="Services\DynamicsServiceManager.cs" />
     <Compile Include="Services\DynamicsServiceState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

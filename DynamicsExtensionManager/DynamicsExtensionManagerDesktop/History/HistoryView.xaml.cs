@@ -14,23 +14,26 @@ using System.Windows.Shapes;
 
 namespace The365People.DynamicsExtensionManager.Desktop
 {
-    public partial class MainView : Window
+    /// <summary>
+    /// Interaction logic for HistoryView.xaml
+    /// </summary>
+    public partial class HistoryView : Window
     {
-        public MainViewModel ViewModel { get; set; }
+        public HistoryViewModel ViewModel { get; private set; }
 
-        public MainView()
+        public HistoryView()
         {
-            this.SetViewModel(new MainViewModel(new MainModel()));
+            this.SetViewModel(new HistoryViewModel(new HistoryModel()));
             this.InitializeComponent();
         }
 
-        public MainView(MainViewModel pViewModel)
+        public HistoryView(HistoryViewModel pViewModel)
         {
             this.SetViewModel(pViewModel);
             this.InitializeComponent();
         }
 
-        private void SetViewModel(MainViewModel pViewModel)
+        private void SetViewModel(HistoryViewModel pViewModel)
         {
             this.ViewModel = pViewModel;
             this.DataContext = this.ViewModel;

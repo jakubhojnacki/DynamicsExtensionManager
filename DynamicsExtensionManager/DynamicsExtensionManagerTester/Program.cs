@@ -10,7 +10,7 @@ namespace The365People.DynamicsExtensionManager.Tester
             Console.WriteLine("Dynamics Extension Manager Tester");
             Console.WriteLine();
 
-            DynamicsService[] lServices = DynamicsServiceDetector.GetServices();
+            DynamicsService[] lServices = DynamicsServiceManager.GetServices();
             foreach (DynamicsService lService in lServices)
                 Console.WriteLine(lService);
 

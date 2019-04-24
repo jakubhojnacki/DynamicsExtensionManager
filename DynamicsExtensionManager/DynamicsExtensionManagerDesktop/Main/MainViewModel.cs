@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using The365People.DynamicsExtensionManager.Core;
 using The365People.WpfLibrary;
 
@@ -11,13 +12,18 @@ namespace The365People.DynamicsExtensionManager.Desktop
 {
     public class MainViewModel : ViewModelBase
     {
+        private App Application { get { return (App)System.Windows.Application.Current; } }
         public MainModel Model { get; private set; }
 
-        public DynamicsService Service { get { return this.Model.Service; } set { this.Model.Service = value; } }
-        public DynamicsFolder Folder { get { return this.Model.Folder; } set { this.Model.Folder = value; } }
+        public DynamicsService Service { get { return this.Model.Service; } set { this.Model.Service = value; this.TriggerPropertyChanged("Service"); this.TriggerPropertyChanged("ServiceText"); } }
+        public DynamicsFolder Folder { get { return this.Model.Folder; } set { this.Model.Folder = value; this.TriggerPropertyChanged("Folder"); this.TriggerPropertyChanged("FolderText"); } }
         public ObservableCollection<DynamicsExtension> Extensions { get { return this.Model.Extensions; } }
         public ObservableCollection<DynamicsExtension> SelectedExtensions { get { return this.Model.SelectedExtensions; } }
         public DynamicsExtension Extension { get { return this.Model.Extension; } set { this.Model.Extension = value; } }
+
+        public string ServiceText { get { return this.Service != null ? this.Service.ToString() : "(Not Connected)"; } }
+        public string FolderText { get { return this.Folder != null ? this.Folder.ToString() : "(Not Connected)"; } }
+        public string ExtensionText { get { return "(Not Selected)"; } }
 
         public RelayCommand ExitCommand { get; set; }
         public RelayCommand AboutCommand { get; set; }
@@ -60,6 +66,7 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public void ExecuteExit(object pParameters)
         {
+            this.Application.Shutdown();
         }
 
         public bool CanExecuteExit(object pParameters)
@@ -69,6 +76,8 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public void ExecuteAbout(object pParameters)
         {
+            AboutView lAboutView = new AboutView();
+            lAboutView.ShowDialog();
         }
 
         public bool CanExecuteAbout(object pParameters)
@@ -78,6 +87,8 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public void ExecuteHistory(object pParameters)
         {
+            HistoryView lHistoryView = new HistoryView();
+            lHistoryView.ShowDialog();
         }
 
         public bool CanExecuteHistory(object pParameters)
@@ -87,6 +98,10 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public void ExecuteConnectToService(object pParameters)
         {
+            ConnectToServiceModel lConnectToServiceModel = new ConnectToServiceModel();
+            ConnectToServiceView lConnectToServiceView = new ConnectToServiceView(new ConnectToServiceViewModel(lConnectToServiceModel));
+            if (lConnectToServiceView.ShowDialog().Value)
+                this.Service = lConnectToServiceModel.Service;
         }
 
         public bool CanExecuteConnectToService(object pParameters)
@@ -96,6 +111,10 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public void ExecuteConnectToFolder(object pParameters)
         {
+            FolderBrowserDialog lDialog = new FolderBrowserDialog();
+            if (lDialog.ShowDialog() == DialogResult.OK)
+                this.Folder = new DynamicsFolder(lDialog.SelectedPath);
+            lDialog.Dispose();
         }
 
         public bool CanExecuteConnectToFolder(object pParameters)
@@ -105,6 +124,7 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public void ExecuteDisconnectFromService(object pParameters)
         {
+            this.Service = null;
         }
 
         public bool CanExecuteDisconnectFromService(object pParameters)
@@ -114,6 +134,7 @@ namespace The365People.DynamicsExtensionManager.Desktop
 
         public void ExecuteDisconnectFromFolder(object pParameters)
         {
+            this.Folder = null;
         }
 
         public bool CanExecuteDisconnectFromFolder(object pParameters)

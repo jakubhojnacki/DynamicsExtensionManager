@@ -5,7 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:The365People.DynamicsExtensionManager.Desktop"
         mc:Ignorable="d"
-        Title="Main View" Height="450" Width="1200">
+        Title="Main View" Height="600" Width="1200" Icon="/Resources/Main.ico">
+    <Window.Resources>
+        <Style TargetType="Image" x:Key="StatusBarImage">
+            <Setter Property="Width" Value="16" />
+            <Setter Property="Height" Value="16" />
+            <Setter Property="Margin" Value="0 0 2 0" />
+        </Style>
+        <Style TargetType="Label" x:Key="StatusBarLabel">
+            <Setter Property="Margin" Value="0 0 5 0" />
+        </Style>
+    </Window.Resources>
     <DockPanel x:Name="MainPanel">
         <Ribbon DockPanel.Dock="Top">
             <Ribbon.ApplicationMenu>
@@ -16,14 +26,14 @@
                     <RibbonApplicationMenuItem Name="HistoryRibbonApplicationMenuItem" Header="History" ImageSource="/Resources/Ribbon/History32.png" Command="{Binding HistoryCommand}" />
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
-            <RibbonTab Header="Source">
+            <RibbonTab Header="General">
                 <RibbonGroup Header="Source">
                     <RibbonButton Name="ConnectToServiceRibbonButton" LargeImageSource="/Resources/Ribbon/ConnectToService32.png" SmallImageSource="/Resources/Ribbon/ConnectToService16.png" Label="Connect to Service" Command="{Binding ConnectToServiceCommand}" />
                     <RibbonButton Name="ConnectToFolderRibbonButton" LargeImageSource="/Resources/Ribbon/ConnectToFolder32.png" SmallImageSource="/Resources/Ribbon/ConnectToFolder16.png" Label="Connect to Folder" Command="{Binding ConnectToFolderCommand}" />
                     <RibbonButton Name="DisconnectFromServiceRibbonButton" SmallImageSource="/Resources/Ribbon/DisconnectFromService16.png" Label="Disconnect from Service" Command="{Binding DisconnectFromServiceCommand}" />
                     <RibbonButton Name="DisconnectFromFolderRibbonButton" SmallImageSource="/Resources/Ribbon/DisconnectFromFolder16.png" Label="Disconnect from Folder" Command="{Binding DisconnectFromFolderCommand}" />
                 </RibbonGroup>
-                <RibbonGroup Header="General">
+                <RibbonGroup Header="Extensions">
                     <RibbonButton Name="DetectExtensionsRibbonButton" LargeImageSource="/Resources/Ribbon/DetectExtensions32.png" SmallImageSource="/Resources/Ribbon/DetectExtensions16.png" Label="Detect Extensions" Command="{Binding DetectExtensionsCommand}" />
                     <RibbonButton Name="ShowExtensionInformationRibbonButton" LargeImageSource="/Resources/Ribbon/ShowExtensionInformation32.png" SmallImageSource="/Resources/Ribbon/ShowExtensionInformation16.png" Label="Show Extension Information" Command="{Binding ShowExtensionInformationCommand}" />
                 </RibbonGroup>
@@ -36,9 +46,39 @@
                     <RibbonButton Name="UpgradeRibbonButton" SmallImageSource="/Resources/Ribbon/Upgrade16.png" Label="Upgrade" Command="{Binding UpgradeCommand}" />
                     <RibbonButton Name="RemoveRibbonButton" SmallImageSource="/Resources/Ribbon/Remove16.png" Label="Remove" Command="{Binding RemoveCommand}" />
                 </RibbonGroup>
+                <RibbonGroup Header="Filter">
+                    <RibbonButton Name="FindRibbonButton" LargeImageSource="/Resources/Ribbon/Find32.png" SmallImageSource="/Resources/Ribbon/Find16.png" Label="Find" Command="{Binding FindCommand}" />
+                    <RibbonButton Name="PublishedRibbonButton" SmallImageSource="/Resources/Ribbon/Published16.png" Label="Published" Command="{Binding PublishedCommand}" />
+                    <RibbonButton Name="NotPublishedRibbonButton" SmallImageSource="/Resources/Ribbon/NotPublished16.png" Label="Not Published" Command="{Binding NotPublishedCommand}" />
+                    <RibbonButton Name="InstalledRibbonButton" SmallImageSource="/Resources/Ribbon/Installed16.png" Label="Installed" Command="{Binding InstalledCommand}" />
+                    <RibbonButton Name="NotInstalledRibbonButton" SmallImageSource="/Resources/Ribbon/NotInstalled16.png" Label="Not Installed" Command="{Binding NotInstalledCommand}" />
+                    <RibbonButton Name="WithFilesRibbonButton" SmallImageSource="/Resources/Ribbon/WithFiles16.png" Label="With Files" Command="{Binding WithFilesCommand}" />
+                    <RibbonButton Name="WithoutFilesRibbonButton" SmallImageSource="/Resources/Ribbon/WithoutFiles16.png" Label="Without Files" Command="{Binding WithoutFilesCommand}" />
+                    <RibbonButton Name="ClearFilterRibbonButton" LargeImageSource="/Resources/Ribbon/ClearFilter32.png" SmallImageSource="/Resources/Ribbon/ClearFilter16.png" Label="Clear Filter" Command="{Binding ClearFilterCommand}" />
+                </RibbonGroup>
             </RibbonTab>
         </Ribbon>
-        <DataGrid x:Name="ServicesDataGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Extensions}" GridLinesVisibility="Vertical">
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/StatusBar/Service16.png" Style="{StaticResource StatusBarImage}"></Image>
+                    <Label Content="{Binding ServiceText}" Style="{StaticResource StatusBarLabel}" />
+                </StackPanel>
+            </StatusBarItem>
+            <StatusBarItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/StatusBar/Folder16.png" Style="{StaticResource StatusBarImage}"></Image>
+                    <Label Content="{Binding FolderText}" Style="{StaticResource StatusBarLabel}"></Label>
+                </StackPanel>
+            </StatusBarItem>
+            <StatusBarItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/StatusBar/Extension16.png" Style="{StaticResource StatusBarImage}"></Image>
+                    <Label Content="{Binding ExtensionText}" Style="{StaticResource StatusBarLabel}"></Label>
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
+        <DataGrid x:Name="ServicesDataGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Extensions}" GridLinesVisibility="Vertical" Margin="5 5 5 5">
             <DataGrid.AlternatingRowBackground>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientActiveCaptionColorKey}}"/>
             </DataGrid.AlternatingRowBackground>

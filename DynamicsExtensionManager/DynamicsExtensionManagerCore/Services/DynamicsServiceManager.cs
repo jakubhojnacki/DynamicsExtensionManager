@@ -7,7 +7,7 @@ using The365People.SerialisationLibrary;
 
 namespace The365People.DynamicsExtensionManager.Core
 {
-    public static class DynamicsServiceDetector
+    public static class DynamicsServiceManager
     {
         public class ServerInstance
         {

@@ -40,10 +40,15 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Main.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -52,6 +57,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="SystemLibrary">
+      <HintPath>..\..\..\..\Repository\Libraries\SystemLibrary.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -65,14 +73,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="About\AboutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConnectToService\ConnectToServiceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="History\HistoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Main\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="About\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="About\AboutModel.cs" />
+    <Compile Include="About\AboutViewModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ConnectToService\ConnectToServiceView.xaml.cs">
+      <DependentUpon>ConnectToServiceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectToService\ConnectToServiceModel.cs" />
+    <Compile Include="ConnectToService\ConnectToServiceViewModel.cs" />
+    <Compile Include="ConnectToService\ServiceImageConverter.cs" />
+    <Compile Include="History\HistoryView.xaml.cs">
+      <DependentUpon>HistoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="History\HistoryModel.cs" />
+    <Compile Include="History\HistoryViewModel.cs" />
     <Compile Include="Main\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -169,6 +205,52 @@
   <ItemGroup>
     <Resource Include="Resources\Ribbon\Remove16.png" />
     <Resource Include="Resources\Ribbon\Remove32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Main0256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Main.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Main.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DynamicsServiceStates\ContinuePending32.png" />
+    <Resource Include="Resources\DynamicsServiceStates\Paused32.png" />
+    <Resource Include="Resources\DynamicsServiceStates\Running32.png" />
+    <Resource Include="Resources\DynamicsServiceStates\StartPending32.png" />
+    <Resource Include="Resources\DynamicsServiceStates\Stopped32.png" />
+    <Resource Include="Resources\DynamicsServiceStates\StopPending32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\StatusBar\Extension16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\StatusBar\Folder16.png" />
+    <Resource Include="Resources\StatusBar\Service16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Ribbon\ClearFilter16.png" />
+    <Resource Include="Resources\Ribbon\ClearFilter32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Ribbon\Installed16.png" />
+    <Resource Include="Resources\Ribbon\Installed32.png" />
+    <Resource Include="Resources\Ribbon\NotInstalled16.png" />
+    <Resource Include="Resources\Ribbon\NotInstalled32.png" />
+    <Resource Include="Resources\Ribbon\NotPublished16.png" />
+    <Resource Include="Resources\Ribbon\NotPublished32.png" />
+    <Resource Include="Resources\Ribbon\Published16.png" />
+    <Resource Include="Resources\Ribbon\Published32.png" />
+    <Resource Include="Resources\Ribbon\WithFiles16.png" />
+    <Resource Include="Resources\Ribbon\WithFiles32.png" />
+    <Resource Include="Resources\Ribbon\WithoutFiles16.png" />
+    <Resource Include="Resources\Ribbon\WithoutFiles32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Ribbon\Find16.png" />
+    <Resource Include="Resources\Ribbon\Find32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
